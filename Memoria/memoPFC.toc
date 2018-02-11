@@ -1,0 +1,51 @@
+\select@language {spanish}
+\contentsline {chapter}{Resumen}{\es@scroman {ix}}{chapter*.2}
+\contentsline {chapter}{\numberline {1}Introducci\'on}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Rob\'otica}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Historia}{2}{subsection.1.1.1}
+\contentsline {subsection}{\numberline {1.1.2}Aplicaciones actuales}{4}{subsection.1.1.2}
+\contentsline {subsubsection}{Sector industrial}{4}{section*.7}
+\contentsline {subsubsection}{Aplicaciones comerciales}{5}{section*.8}
+\contentsline {subsection}{\numberline {1.1.3}Software en robots}{5}{subsection.1.1.3}
+\contentsline {section}{\numberline {1.2}Visi\'on en robots}{6}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Aplicaciones actuales}{6}{subsection.1.2.1}
+\contentsline {section}{\numberline {1.3}Simulaci\'on}{7}{section.1.3}
+\contentsline {section}{\numberline {1.4}Rob\'otica A\'erea}{8}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Historia}{8}{subsection.1.4.1}
+\contentsline {subsubsection}{Aplicaciones actuales}{9}{section*.14}
+\contentsline {subsubsection}{Cuadric\'opteros}{10}{section*.16}
+\contentsline {subsection}{\numberline {1.4.2}Rob\'otica A\'erea en la Universidad Rey Juan Carlos}{12}{subsection.1.4.2}
+\contentsline {chapter}{\numberline {2}Objetivos}{15}{chapter.2}
+\contentsline {section}{\numberline {2.1}Tareas que cumplir}{15}{section.2.1}
+\contentsline {section}{\numberline {2.2}Requisitos}{15}{section.2.2}
+\contentsline {section}{\numberline {2.3}Metodolog\IeC {\'\i }a}{15}{section.2.3}
+\contentsline {section}{\numberline {2.4}Planificaci\'on}{16}{section.2.4}
+\contentsline {chapter}{\numberline {3}Infraestructura}{19}{chapter.3}
+\contentsline {section}{\numberline {3.1}Interfaz Gr\'afica de usuario}{19}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Qt}{19}{subsection.3.1.1}
+\contentsline {subsubsection}{PyQt}{20}{section*.22}
+\contentsline {subsection}{\numberline {3.1.2}Matplotlib}{20}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}ICE}{20}{section.3.2}
+\contentsline {section}{\numberline {3.3}JdeRobot}{20}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Teleoperadores uav\_viewer e introrob\_py}{20}{subsection.3.3.1}
+\contentsline {section}{\numberline {3.4}Gazebo}{21}{section.3.4}
+\contentsline {subsubsection}{Formato SDF}{22}{section*.24}
+\contentsline {subsection}{\numberline {3.4.1}Plugins}{22}{subsection.3.4.1}
+\contentsline {section}{\numberline {3.5}Blender}{23}{section.3.5}
+\contentsline {section}{\numberline {3.6}Visualizaci\'on virtual}{23}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}AprilTags}{23}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}OpenCV}{24}{subsection.3.6.2}
+\contentsline {section}{\numberline {3.7}Dispositivos f\IeC {\'\i }sicos}{24}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}MK802IV}{24}{subsection.3.7.1}
+\contentsline {subsection}{\numberline {3.7.2}Ar.Drone 2}{24}{subsection.3.7.2}
+\contentsline {chapter}{\numberline {4}Desarrollo de la infraestructura}{25}{chapter.4}
+\contentsline {section}{\numberline {4.1}Coche virtual y teleoperador}{25}{section.4.1}
+\contentsline {section}{\numberline {4.2}Mk802IV}{25}{section.4.2}
+\contentsline {section}{\numberline {4.3}Distance Viewer}{25}{section.4.3}
+\contentsline {chapter}{\numberline {5}Aterrizaje visual}{27}{chapter.5}
+\contentsline {section}{\numberline {5.1}Control visual}{27}{section.5.1}
+\contentsline {chapter}{\numberline {6}Conclusiones y l\IeC {\'\i }neas futuras}{29}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusiones}{29}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}T\IeC {\'\i }tulo de la primera subsecci\'on}{29}{subsection.6.1.1}
+\contentsline {section}{\numberline {6.2}L\IeC {\'\i }neas futuras}{29}{section.6.2}
+\contentsline {chapter}{Bibliograf\'{\i }a}{31}{chapter*.28}

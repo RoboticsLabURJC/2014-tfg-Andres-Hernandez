@@ -1,0 +1,72 @@
+\chapter{Objetivos}\label{CAP:Objetivos}
+
+\section{Tareas que cumplir}
+
+El objetivo principal de este Trabajo de Fin de Grado es desarrollar una aplicación, que a través de la aplicación de una técnica de visión artificial, dote de un comportamiento autónomo a un \textit{drone} en el que busque una baliza visual y aterrice sobre ella. Para llegar a él, ha sido fundamental dividir el proyecto en objetivos más pequeños, que sumados, dan forma a todo el conjunto. 
+
+ \begin{itemize}
+ 
+ \item Diseño de un coche y desarrollo de un plugin, ambos para Gazebo, con una baliza visual en su techo.
+ 
+ \item Diseño y desarrollo una aplicación de control visual para la localización, seguimiento y aterrizaje en un objeto preparado para la tarea. Se compone de una parte perceptiva, que recoge la información de las imágenes, y una parte de control y actuación, que generará los diferentes comportamientos del cuadricóptero.
+ 
+ \item Validación experimental en el cuadricóptero simulado. Se realizarán varias pruebas para demostrar el correcto funcionamiento de la infraestructura y del control visual.
+  
+ \end{itemize}
+
+\section{Requisitos}
+
+Se deberán satisfacer, adicionalmente, los siguientes requisitos:
+
+\begin{itemize}
+
+\item Los componentes y aplicaciones desarrollados han de estar integrados en la plataforma \textit{JdeRobot}.
+
+\item El control del cuadricóptero simulado ha de ser fluído, de modo que pueda seguir objetos en movimiento a 5 cm/seg.
+
+\item Los componentes y aplicaciones desarrollados han de ser computacionalmente eficientes.
+
+\end{itemize}
+
+\section{Metodología}
+
+Para poder materializar los objetivos y requisitos, previamente mencionados, es necesario aplicar algún método que defina las distintas etapas y estados. En este Trabajo de Fin de Grado se aplica el método de dessarrollo en espiral. Este modelo, creado por Barry Boehm en 1986, se utiliza frecuentemente en la ingeniería de software. Se basa en una serie de iteraciones en bucle. En cada ciclo, se realiza un conjunto de cuatro actividades:
+
+\begin{enumerate}
+\item \textbf{Determinar los objetivos}: Poner limitaciones definidas en forma de objetivos o resquisitos. Dividir el proyecto en partes más pequeñas.
+\item \textbf{Análisis del riesgo}: Estudiar los riesgos de cada uno de los objetivos que se abordan. Evaluar las alternativas posibles en caso de amenazas.
+\item \textbf{Desarrolar y probar}: Verificación de la tarea actual. Al mismo tiempo, se realiza un análisis para encontrar nuevos factores de riesgo, como errores que se podrían arrastran a la próxima iteración.
+\item \textbf{Planificación}: Establecer y definir las fases anteriores.
+\end{enumerate}
+
+\begin{figure}[h]
+ \centering
+ \includegraphics[width=90mm]{Figuras/desarrollo_en_espiral.png}
+ \caption{Representación del desarrollo en espiral.}
+ \label{fig:21_planificacion_espiral}
+\end{figure}
+
+\section{Planificación}
+
+Durante el desarrolo de este proyecto, se han establecido reuniones periódicas con el tutor. En ellas, revisábamos los objetivos anteriormente fijados y los resultados obtenidos. Si alguno de los objetivos generaba algún problema o no se llegaba al resultado deseado, se aplazaban o se profundizaba en la raíz del problema. A continuación, se determinaban los subobjetivos de nuestro próximo encuentro. 
+
+Como parte de la evaluación de los objetivos propuestos, ha sido fundamental la utilización del \textit{mediawiki}\footnote{http://jderobot.org/Andresjhe-tfg}  de la plataforma \textit{JdeRobot}. En el publicaba, a modo de cuaderno de bitácora, redactando los éxitos y progresos, haciendo uso además de contenido multimedia como imágenes o vídeos. 
+
+Para el seguimiento y almacenamiento del software desarrolado hemos empleado la herramienta Subversion. Todo el código relacionado con este proyecto se encuentra alojado en mi repositorio\footnote{https://svn.jderobot.org/users/andresjhe/tfg}.
+
+
+
+\begin{itemize}
+
+\item Familiarización con el entorno de \textit{JdeRobot}: Incluye el estudio de las dependencias necesarias para la instalación del entorno. Estudio de las diferentes bibliotecas, interfaces y componentes. Aprendizaje y profundización de lenguajes de programación como Python y C++, así como la herramienta para las comunicaciones ICE. Así como el estudio y familiarización de la biblioteca April Tags para la detección de los mismos y la biblioteca de visión OpenCV. 
+
+\item Familiarización con Gazebo. Se ha estudiado los plugins ya existentes en JdeRobot y a su vez, la creación otros nuevos a través de la API de Gazebo. El aprendizaje de Blender ha sido necesario para generar el modelo virtual de un vehículo. Por último, se ha desarrolado su respectivo plugin en Python para teledirigir y asignar rutas al vehículo anteriormente generado. Se ha desarrollado un componente integrado en JdeRobot que calcule y dibuje distancias a partir de la posición  de modelos en el simulador Gazebo.
+
+\item Estudio del dispositivo MK802IV para una modificación del software para ser empleado como unidad de procesamiento junto al AR.Drone. Adicionalmente, se ha investigado diferentes medios para realizar la comunicación con el drone.
+
+\item Desarrollo de la aplicación que se encarga del control visual. En este punto se han creado diferentes mundos en Gazebo y se han diseñado distintos comportamientos en el vehículo.
+
+\item Validación experimental, en la que se validará en función de los resultados la solución programada.
+
+\end{itemize}
+

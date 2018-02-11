@@ -1,0 +1,129 @@
+
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% %%% DEFINICIONES DE ESTILO QUE DEBEN INCLUIRSE EN EL PREÁMBULO %%%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% FORMATO DE PÁGINA (LAYOUT) ______________________________________________________________________
+
+\setlength{\hoffset}{0pt}
+% [1] Más una pulgada (1 pulgada = 2.53807cm = 72pt), distancia desde la izquierda al margen de impresión.
+\setlength{\voffset}{-15pt}
+% [2] Más una pulgada (1 pulgada = 2.53807cm = 72pt), distancia desde arriba al margen de impresión.
+\setlength{\oddsidemargin}{10pt}
+% [3] En las páginas IMPARES Distancia, por la izquierda, desde el margen de impresión, hasta CUERPO del texto.
+\setlength{\evensidemargin}{28pt}
+% [3] En las páginas PARES: Distancia, por la izquierda, desde el margen de impresión, hasta CUERPO del texto.
+\setlength{\topmargin}{0pt}
+% [4] Distancia, por arriba, desde el margen de impresión, hasta la CABECERA.
+\setlength{\headheight}{15pt}
+% [5] Alto de la CABECERA.
+\setlength{\headsep}{17pt}
+% [6] Distancia, por arriba, desde la CABECERA hasta el CUERPO del texto.
+\setlength{\textheight}{666pt}
+% [7] Alto del CUERPO del texto (23,48 cm).
+\setlength{\textwidth}{416pt}
+% [8] Ancho del CUERPO del texto (14,66 cm).
+\setlength{\marginparsep}{7pt}
+% [9] Distancia, por la derecha, desde el CUERPO del texto, hasta las NOTAS AL MARGEN.
+\setlength{\marginparwidth}{54pt}
+% [10] Ancho de las NOTAS AL MARGEN.
+\setlength{\footskip}{30pt}
+% [11] Distancia, por abajo, entre el CUERPO del texto y el PIE, más el alto del PIE.
+%\setlength{\marginparpush}{5pt}
+%
+
+
+
+% FORMATO DE CABECERA Y PIE DE PÁGINA _____________________________________________________________
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+\fancyhf{}
+% Vaciar cabecera y pie de página.
+\fancyhead[RO]{{\footnotesize{\scshape\leftmark\ /} \thepage}}
+% En las IMPARES, a la derecha: Título del capítulo, Barra, Número de página.
+\fancyhead[LE]{{\footnotesize \thepage {\scshape\ /\ \leftmark}}}
+% En las PARES, a la izquierda: Número de página, Barra, Título del capítulo.
+\renewcommand{\headrulewidth}{0pt}
+% Eliminar la línea inferior.
+
+
+
+% FORMATOS ESPECIALES EN TÍTULOS DE CAPÍTULOS, SECCIONES,... ______________________________________
+
+\makeatletter
+
+\renewcommand{\@makechapterhead}[1]{\vspace*{100\p@}%
+{\parindent \z@ \raggedright \normalfont
+     \ifnum \c@secnumdepth > \m@ne
+       \if@mainmatter
+         \large\scshape
+         \textbf{\@chapapp}\space
+         \Huge\scshape \textbf{\thechapter}
+         \par\nobreak
+         \vskip 0\p@
+       \fi
+     \fi
+\interlinepenalty\@M \LARGE \scshape \textbf{#1}\par\nobreak
+\vskip 0\p@
+}%
+\vspace*{25\p@}}
+
+\renewcommand{\section}{\@startsection {section}{1}{\z@}%
+                                   {-3ex \@plus -1ex \@minus -.2ex}%
+                                   {1.25ex \@plus.2ex}%
+                                   {\normalfont\large\bfseries}}
+
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+                                     {-2.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+                                     {-2.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\makeatother
+
+
+
+% FORMATOS ESPECIALES EN TÍTULOS DE ENTORNOS ______________________________________________________
+
+\captionsetup{margin=50pt,font=small,labelfont=bf,labelsep=period}
+%,aboveskip=16pt
+\newcommand{\Titulo}[2]{
+    \caption[#1] {\textbf{#1.} #2.}}
+% Título habitual en figuras y tablas.
+
+\newcommand{\TituloB}[1]{
+    \caption[]{\textbf{#1.}}}
+% Título reducido en figuras y tablas (NO incluido en la lista de figuras o tablas)
+
+\newcommand{\TituloC}[1]{
+    \caption[#1]{\textbf{#1.}}}
+% Título reducido en figuras y tablas (SÍ incluido en la lista de figuras o tablas)
+
+
+% FORMATOS GENERALES ______________________________________________________________________________
+
+\linespread{1.1}
+% Espacio entre líneas (Interlineado).
+\sloppy
+% Para recortar convenientemente las citas bibliográficas.
+\deactivatetilden
+% Para no confundir "~N" con la Ñ.
+
+%\setglosslabel{\rmfamily\bfseries#1\ifglossshort{ (#3)}{}}
+% Formato de las entradas en el Glosario.
+
+\renewcommand{\mathbf}[1]{\boldsymbol{#1}}
+% Para imprimir negrita y cursiva en modo ecuación.
+
+%\setcounter{secnumdepth}{4} \setcounter{tocdepth}{4}
+% Para cambiar la profundidad de numeración en secciones e índice.
+
+
+
+
