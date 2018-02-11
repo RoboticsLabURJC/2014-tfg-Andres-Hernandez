@@ -1,0 +1,156 @@
+<?xml version="1.0" ?>
+<sdf version="1.4">
+  <world name="default">
+    <!-- Ground -->
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    
+My robots -->
+    <include>
+      <uri>model://sun</uri>
+    </include>	
+    <include>
+      <uri>model://carApriltag</uri>
+      <pose>0 0 0.5 0 0 0</pose>
+    </include>
+    <!--
+    <include>
+      <uri>model://lamp_post</uri>
+      <pose>5 13 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://lamp_post</uri>
+      <pose>-4 13 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-24 18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-16 18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-8 18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>0 18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>8 18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>16 18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-24 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-16 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-8 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>8 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>16 0 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-24 9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-16 9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-8 9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>0 9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>8 9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>16 9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-24 -9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-16 -9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-8 -9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>0 -9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>8 -9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>16 -9 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-24 -18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-16 -18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>-8 -18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>0 -18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>8 -18 0 0 0 0</pose>
+    </include>
+    <include>
+      <uri>model://mud_box</uri>
+      <pose>16 -18 0 0 0 0</pose>
+    </include>
+    -->
+    <include>
+      <uri>model://ArDrone</uri>
+      <pose>0 -3.2 0.2 0 0 0</pose>
+    </include>
+    
+    <scene>
+  		<shadows>0</shadows>
+  	</scene>
+  </world>
+</sdf>

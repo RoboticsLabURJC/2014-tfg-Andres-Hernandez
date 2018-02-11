@@ -1,0 +1,38 @@
+<?xml version='1.0'?>
+<sdf version='1.5'>
+  <model name='prueba'>
+    <pose>0 0 0.5 0 -0 0</pose>
+    <link name='prueba::custom_-36'>
+      <pose>0 0 0 0 -0 0</pose>
+      <gravity>1</gravity>
+      <self_collide>0</self_collide>
+      <kinematic>0</kinematic>
+      <visual name='custom_-36_visual'>
+        <pose>0 0 0 0 -0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>/home/andresjhe/Blender/model.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <material>
+          <script>
+            <uri>file://media/materials/scripts/gazebo.material</uri>
+            <name>Gazebo/Blue</name>
+          </script>
+        </material>
+      </visual>
+      <collision name='defaultModel_0::custom_-36_collision'>
+        <geometry>
+          <mesh>
+            <uri>/home/andresjhe/Blender/model.dae</uri>
+            <scale>1 1 1</scale>
+          </mesh>
+        </geometry>
+        <pose>0 0 0 0 -0 0</pose>
+      </collision>
+    </link>
+    <static>0</static>
+    <allow_auto_disable>1</allow_auto_disable>
+  </model>
+</sdf>
