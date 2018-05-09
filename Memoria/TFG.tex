@@ -1,0 +1,120 @@
+\documentclass[a4paper,11pt,twoside]{book}
+
+% PAQUETES UTILIZADOS __________________________________________________
+\usepackage[spanish,activeacute]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb,latexsym}
+\usepackage{graphicx}
+\usepackage[colorlinks=false,linkcolor=black]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{caption}
+\usepackage{subfigure}
+\usepackage[toc,page]{appendix}
+
+%\usepackage{longtable}
+%\usepackage{multicol}
+%\usepackage{multirow}
+
+%\usepackage{gloss}
+%\usepackage{makeidx}
+
+
+% DEFINICIÓN DEL ESTILO ________________________________________________
+\input{./Estilo/EstiloEnPreambulo}
+
+%\makeindex
+% Para hacer el Índice Alfabético.
+
+%\makegloss
+% Para hacer el Glosario.
+
+\begin{document}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\frontmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% DEFINICIÓN DEL ESTILO ________________________________________________
+\input{./Estilo/EstiloEnDocumento}
+
+
+% PORTADA EXTERIOR _____________________________________________________
+\thispagestyle{empty}
+\input{./General/Portada}
+\newpage \thispagestyle{empty} \cleardoublepage
+% Página en blanco detrás.
+
+% DEDICATORIA __________________________________________________________
+\thispagestyle{empty}
+\input{./General/Dedicatoria}
+\newpage \thispagestyle{empty} \cleardoublepage
+
+% AGRADECIMIENTOS ______________________________________________________
+\thispagestyle{empty}
+\input{./General/Agradecimientos.tex}
+\newpage \thispagestyle{empty} \cleardoublepage
+
+% ÍNDICE DE CONTENIDOS _________________________________________________
+\tableofcontents
+\newpage \thispagestyle{empty} \cleardoublepage
+
+% RESUMEN ______________________________________________________________
+\thispagestyle{empty}
+\input{./General/Resumen}
+\newpage \thispagestyle{empty} \cleardoublepage
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mainmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CAPÍTULOS ____________________________________________________________
+\renewcommand{\chaptermark}[1]{\markboth{#1 (C.\ \thechapter)}{}}
+\fancyhead[RO]{{\footnotesize{\itshape\rightmark\ /} \thepage}}
+% En las IMPARES, a la derecha: Título de la sección, Barra, Número de página.
+
+\input{./Capitulos/Intro}
+\newpage \thispagestyle{empty} \cleardoublepage
+\input{./Capitulos/Objetivos}
+\newpage \thispagestyle{empty} \cleardoublepage
+\input{./Capitulos/MatMet}
+\newpage \thispagestyle{empty} \cleardoublepage
+\input{./Capitulos/Desarrollo}
+\newpage \thispagestyle{empty} \cleardoublepage
+\input{./Capitulos/Resul}
+\newpage \thispagestyle{empty} \cleardoublepage
+\input{./Capitulos/Conclu}
+\newpage \thispagestyle{empty} \cleardoublepage
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\backmatter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\pagenumbering{Roman}%
+
+% BIBLIOGRAFÍA _________________________________________________________
+\bibliographystyle{./Bibliografia/IEEEtran}
+\bibliography{./Bibliografia/RefsPFC}
+\addcontentsline{toc}{chapter}{\bibname}
+\newpage \thispagestyle{empty} \cleardoublepage
+\nocite{*} % [Sin comentar] Incluye todas las referencias, hayan sido citadas o no.
+
+% ÍNDICE DE TABLAS _____________________________________________________
+%\listoftables \addcontentsline{toc}{chapter}{\listtablename}
+%\newpage \thispagestyle{empty} \cleardoublepage
+
+
+%% ÍNDICE DE ALFABÉTICO ________________________________________________
+%{
+%\twocolumn \small \setlength{\columnsep}{2cm}
+%\printindex \addcontentsline{toc}{chapter}{\indexname}
+%}
+%\newpage \thispagestyle{empty} \cleardoublepage
+%
+%\onecolumn
+
+
+\end{document}
+
+
+
