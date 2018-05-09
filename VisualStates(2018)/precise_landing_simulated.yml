@@ -1,0 +1,28 @@
+precise_landing_simulated:
+  NodeName: precise_landing_simulated
+  myCMDVel:
+    Name: myCMDVel
+    Proxy: CMDVel:default -h localhost -p 9000
+    Server: 1
+    Topic: ''
+  myCamera:
+    Format: RGB8
+    Name: myCamera
+    Proxy: Camera:default -h localhost -p 9000
+    Server: 1
+    Topic: ''
+  myDroneExtra:
+    Name: myDroneExtra
+    Proxy: Extra:default -h localhost -p 9000
+    Server: 1
+    Topic: ''
+  myNavData:
+    Name: myNavData
+    Proxy: Navdata:default -h localhost -p 9000
+    Server: 1
+    Topic: ''
+  myPose3D:
+    Name: myPose3D
+    Proxy: Pose3D:default -h localhost -p 9000
+    Server: 1
+    Topic: ''
