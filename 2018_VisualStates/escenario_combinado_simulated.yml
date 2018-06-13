@@ -1,0 +1,18 @@
+escenario_combinado:
+  NodeName: escenario_combinado
+  myCamera:
+    Format: RGB8
+    Name: myCamera
+    Proxy: Camera:default -h 0.0.0.0 -p 9000
+    Server: 1
+    Topic: ''
+  myCmdvel:
+    Name: myCmdvel
+    Proxy: CMDVel:default -h 0.0.0.0 -p 9000
+    Server: 1
+    Topic: ''
+  myExtra:
+    Name: myExtra
+    Proxy: Extra:default -h 0.0.0.0 -p 9000
+    Server: 1
+    Topic: ''

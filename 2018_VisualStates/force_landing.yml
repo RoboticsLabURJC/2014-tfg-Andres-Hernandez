@@ -1,0 +1,7 @@
+force_landing:
+  NodeName: force_landing
+  myExtra:
+    Name: myExtra
+    Proxy: ardrone_extra:default -h 0.0.0.0 -p 9994
+    Server: 1
+    Topic: ''

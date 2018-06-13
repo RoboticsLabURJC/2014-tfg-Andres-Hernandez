@@ -1,0 +1,414 @@
+<?xml version="1.0" ?>
+<VisualStates>
+  <config type="0">
+    <interfaces>
+      <interface>
+        <serverType>ice</serverType>
+        <name>myCmdvel</name>
+        <topic></topic>
+        <proxyName>ardrone_cmdvel</proxyName>
+        <ip>0.0.0.0</ip>
+        <port>9995</port>
+        <interfaceName>CMDVel</interfaceName>
+      </interface>
+      <interface>
+        <serverType>ice</serverType>
+        <name>myCamera</name>
+        <topic></topic>
+        <proxyName>ardrone_camera</proxyName>
+        <ip>0.0.0.0</ip>
+        <port>9999</port>
+        <interfaceName>Camera</interfaceName>
+      </interface>
+      <interface>
+        <serverType>ice</serverType>
+        <name>myExtra</name>
+        <topic></topic>
+        <proxyName>ardrone_extra</proxyName>
+        <ip>0.0.0.0</ip>
+        <port>9994</port>
+        <interfaceName>ArDroneExtra</interfaceName>
+      </interface>
+    </interfaces>
+  </config>
+  <functions>def pitchCorrection(self,t):
+    if (t&gt;=0):
+        t = t/(math.pi) - 1
+    else:
+        t = t/(math.pi) + 1
+        
+    return t
+
+def rollCorrection(self,t):
+    if (t&gt;=0):
+        t = (2*t)/(math.pi) - 1
+    else:
+        t = (2*t)/(math.pi) + 1
+        
+    return t
+
+#Checks if valid Rotation Matrix
+def isRotationMatrix(self,R) :
+    Rt = np.transpose(R)
+    shouldBeIdentity = np.dot(Rt, R)
+    I = np.identity(3, dtype = R.dtype)
+    n = np.linalg.norm(I - shouldBeIdentity)
+    return n &lt; 1e-6
+  
+#Calculates rotation matrix to euler angles
+def rotationMatrixToEulerAngles(self,R) :
+ 
+    assert(self.isRotationMatrix(R))
+     
+    sy = math.sqrt(R[0,0] * R[0,0] +  R[1,0] * R[1,0])
+     
+    singular = sy &lt; 1e-6
+ 
+    if  not singular :
+        x = math.atan2(R[2,1] , R[2,2])
+        y = math.atan2(-R[2,0], sy)
+        z = math.atan2(R[1,0], R[0,0])
+    else :
+        x = math.atan2(-R[1,2], R[1,1])
+        y = math.atan2(-R[2,0], sy)
+        z = 0
+ 
+    return np.array([x, y, z])</functions>
+  <variables>self.max_speed = 0.07
+self.dead_band_x = 0.2 #Real_imagen #Real_relativas 0.4 #Virtual 0.2
+self.dead_band_y = 0.15 #Real_imagen #Real_relativas 0.15 #Virtual 0.2
+self.dead_band_z = 0.3 #Real_imagen #Real_relativas 0.3 #Virtual 0.2 
+self.min_z = 2.8
+self.dead_band_w = 0.230 #Real_imagen #Real_relativas 0.230 #0.2
+self.center = [0,0]
+self.kp = 0.1 #Real_relativas 0.1 #Virtual 0.1
+self.kd = 1500 #Real_imagen 0.01 #Real_relativas 0.7 #Virtual 0.03
+self.ki = 0.01 #Real_imangen #Real_relativas0.01 #Virtual 0.005
+self.kpw = 0.1 #Virtual 0.1
+self.kdw = 1500 #Real 0.7 #Virtual 0
+self.kiw = 0.01 #Real 0.01 #Virtual 0
+self.kpz = 0.4 #Real 0.4 #Virtual 0.1
+self.kdz = 1500 #Real 0.7#Virtual 0.01
+self.kiz = 0.01 # Real 0.01# Virtual 0.001
+self.cycle = 50 #in ms
+
+self.error_xy_anterior = [0,0]
+self.error_z_anterior = 0
+self.error_w_anterior = 0
+
+self.vxi = 0
+self.vyi = 0
+self.vzi = 0
+self.vwi = 0
+
+#AprilTags
+self.options = apriltag.DetectorOptions()
+self.detector = apriltag.Detector(self.options)
+self.MARKER_SIZE = 0.28
+#Pose
+self.x = 0.0
+self.y = 0.0
+self.z = 0.0
+self.pitch = 0.0
+#Beacons
+self.beacons = [4,7]
+self.beaconCounter = 0
+self.switchBeacon = False
+self.timeToLand = False</variables>
+  <libraries>
+    <library>cv2</library>
+    <library>numpy as np</library>
+    <library>apriltag</library>
+    <library>math</library>
+  </libraries>
+  <state id="0" initial="True">
+    <posx>0.0</posx>
+    <posy>0.0</posy>
+    <name>root</name>
+    <code></code>
+    <timestep>50</timestep>
+    <state id="1" initial="False">
+      <posx>837.0</posx>
+      <posy>972.0</posy>
+      <name>Beacon Tracking</name>
+      <code>print &quot;*****&quot;
+
+vx=0
+vy=0
+vz=0
+vw=0
+
+#Generation of Apriltag Detector
+
+
+#Algorithm
+#Image Processing
+inputImage = self.interfaces.myCamera.getImage()
+inputImageData = inputImage.data
+inputImageData_h = inputImage.height
+inputImageData_w = inputImage.width
+inputImageData.shape = inputImageData_h, inputImageData_w, 3
+color = cv2.cvtColor(inputImageData, cv2.COLOR_RGB2BGR)
+#Apriltags Detection
+gray = cv2.cvtColor(inputImageData, cv2.COLOR_RGB2GRAY)
+cv2.imshow(&quot;Image&quot;,gray)
+cv2.waitKey(30)
+detections = self.interfaces.detector.detect(gray)
+num_detections = len(detections)
+if (num_detections &lt;= 0):
+    self.interfaces.x = 0.0
+    self.interfaces.y = 0.0
+    self.interfaces.z = 0.0
+    self.interfaces.pitch = 0.0
+else:
+    for i, detection in enumerate(detections):
+        if (detection.tag_id == self.interfaces.beacons[self.interfaces.beaconCounter]):
+            #print &quot;Beacon %d detected&quot; % detection.tag_id
+            HALF_MARKER_SIZE=self.interfaces.MARKER_SIZE/2 #Size in meters
+            m_MarkerPoints = np.zeros((4,3),dtype=np.float32)
+            m_MarkerPoints[0,0] =-HALF_MARKER_SIZE
+            m_MarkerPoints[0,1] =-HALF_MARKER_SIZE
+            m_MarkerPoints[0,2] = 0
+            m_MarkerPoints[1,0] =-HALF_MARKER_SIZE
+            m_MarkerPoints[1,1] = HALF_MARKER_SIZE
+            m_MarkerPoints[1,2] = 0
+            m_MarkerPoints[2,0] = HALF_MARKER_SIZE
+            m_MarkerPoints[2,1] = HALF_MARKER_SIZE
+            m_MarkerPoints[2,2] = 0
+            m_MarkerPoints[3,0] = HALF_MARKER_SIZE
+            m_MarkerPoints[3,1] = -HALF_MARKER_SIZE
+            m_MarkerPoints[3,2] = 0
+            #Camera Matrix and Distorssion Coefficients. 
+            #Use cameracalib from JdeRobot for calibrating a different camera than ArDrone 2 one
+            #Camera Matrix 
+                #Gazebo simulator [187.336, 0, 160, 0, 187.336, 120, 0, 0, 1]
+                #ArDrone 2        [731.37257937739332, 0, 322.35647387552422, 0, 734.23757205576192, 246.30430666269825, 0, 0, 1]
+            cameraMatrix = np.array([731.37257937739332, 0, 322.35647387552422, 0, 734.23757205576192, 246.30430666269825, 0, 0, 1])
+            cameraMatrix = np.resize(cameraMatrix,(3,3))        
+            #Distorsion Coefficients 
+                #Gazebo         np.zeros((5, 1), np.uint8) #Comment this line when using ArDrone 2
+                #Ardrone 2      np.array([-0.07304604105914128, 0.50646907582979650, 0.00024443957708413687, 0.00074556540195940392,-1.0762308065763191])
+            distCoeffs = np.array([-0.07304604105914128, 0.50646907582979650, 0.00024443957708413687, 0.00074556540195940392,-1.0762308065763191]) #Substitute Coefficients
+            retVal,rvec,tvec =cv2.solvePnP(m_MarkerPoints,detection.corners,cameraMatrix,distCoeffs)
+            rodri = cv2.Rodrigues(rvec)
+            #We get X,Y and Z
+            cameraPosition = -np.matrix(rodri[0]).T * np.matrix(tvec)
+            #self.interfaces.x = (detection.center[1] - (inputImageData_h/2))/100 
+            #self.interfaces.y = (detection.center[0] - (inputImageData_w/2))/100
+            self.interfaces.x = cameraPosition.item(0)
+            self.interfaces.y = cameraPosition.item(1)
+            self.interfaces.z = cameraPosition.item(2)
+            #We get roll, pitch and yaw from Euler Angles        
+            eulerAngles = self.interfaces.rotationMatrixToEulerAngles(rodri[0])
+            #yaw = eulerAngles[0]
+            self.interfaces.pitch = self.interfaces.pitchCorrection(eulerAngles.item(0))
+            #pitch = eulerAngles[1]
+            #roll = self.interfaces.rollCorrection(eulerAngles[2])
+            #print yaw,pitch,roll
+        else:  
+            print &quot;Beacon %d not detected&quot; % self.interfaces.beacons[self.interfaces.beaconCounter] 
+            self.interfaces.x = 0.0
+            self.interfaces.y = 0.0
+            self.interfaces.z = 0.0
+            self.interfaces.pitch = 0.0
+        
+    print (&quot;x %.3f&quot; % self.interfaces.x,&quot;y %.3f&quot; % self.interfaces.y, &quot;z %.3f&quot; % self.interfaces.z,&quot;pitch %.3f&quot; % self.interfaces.pitch)
+    if (abs(self.interfaces.x)&gt;0 and abs(self.interfaces.y)&gt;0 and abs(self.interfaces.z)&gt;0 and abs(self.interfaces.pitch)&gt;0):
+        
+        #PID controller
+        error_xy = [self.interfaces.center[0]-self.interfaces.x, self.interfaces.center[1]-self.interfaces.y]
+        error_z = self.interfaces.min_z - self.interfaces.z
+        error_w = -self.interfaces.pitch
+        #print (&quot;error_x %.4f&quot; % error_xy[0],&quot;error_y %.4f&quot; % error_xy[1], &quot;error_z %.4f&quot; % error_z,&quot;error_pitch %.4f&quot; % error_w)
+        #Dead Bands
+        #VX
+        if abs(error_xy[0])&lt;self.interfaces.dead_band_x:
+            vx=0
+        else:
+            #Proporcional
+            vxp = self.interfaces.kp * error_xy[0]
+            #Derivada
+            vxd = self.interfaces.kd * ((error_xy[0]-self.interfaces.error_xy_anterior[0])/self.interfaces.cycle)
+            #Integral 
+            self.interfaces.vxi = self.interfaces.ki * (self.interfaces.vxi+(error_xy[0]*self.interfaces.cycle))
+            #Total
+            vx = vxp + vxd + self.interfaces.vxi
+            #print vxp,vxd,self.interfaces.vxi
+        #VY
+        if abs(error_xy[1])&lt;self.interfaces.dead_band_y:
+            vy=0
+        else:
+            #Proporcional
+            vyp = self.interfaces.kp * error_xy[1]
+            #Derivada
+            vyd = self.interfaces.kd * ((error_xy[1]-self.interfaces.error_xy_anterior[1])/self.interfaces.cycle)
+            #Integral
+            self.interfaces.vyi = self.interfaces.ki * (self.interfaces.vyi+(error_xy[1]*self.interfaces.cycle))
+            #Total
+            print self.interfaces.vyi            
+            vy = vyp + vyd + self.interfaces.vyi
+        #VZ
+        if abs(error_z)&lt;self.interfaces.dead_band_z:
+            vz=0
+        else:
+            #Proporcional
+            vzp = self.interfaces.kpz * error_z
+            #Derivada
+            vzd = self.interfaces.kdz * ((error_z-self.interfaces.error_z_anterior)/self.interfaces.cycle)
+            #Integral
+            self.interfaces.vzi = self.interfaces.kiz * (self.interfaces.vzi+(error_z*self.interfaces.cycle))
+            #Total
+            vz = vzp + vzd + self.interfaces.vzi
+
+        #VW
+        if abs(error_w)&lt;self.interfaces.dead_band_w:
+            vw=0
+        else:
+            #Proporcional
+            vwp = self.interfaces.kpw * error_w
+            #Derivada
+            vwd = self.interfaces.kdw * ((error_w-self.interfaces.error_w_anterior)/self.interfaces.cycle)
+            #Integral
+            self.interfaces.vwi = self.interfaces.kiw * (self.interfaces.vwi+(error_w*self.interfaces.cycle))
+            #Total
+            vw = vwp + vwd + self.interfaces.vwi        
+
+        #Max_speed
+        if abs(vx)&gt;self.interfaces.max_speed:
+            if vx&lt;0:
+                vx=-self.interfaces.max_speed
+            else:
+                vx=self.interfaces.max_speed
+        if abs(vy)&gt;self.interfaces.max_speed:
+            if vy&lt;0:
+                vy=-self.interfaces.max_speed
+            else:
+                vy=self.interfaces.max_speed
+        if abs(vz)&gt;self.interfaces.max_speed:
+            if vz&lt;0:
+                vz=-self.interfaces.max_speed
+            else:
+                vz=self.interfaces.max_speed
+        if abs(vw)&gt;self.interfaces.max_speed:
+            if vw&lt;0:
+                vw=-self.interfaces.max_speed
+            else:
+                vw=self.interfaces.max_speed
+        if(vx==0):
+            self.interfaces.error_xy_anterior[0] = 0
+        else:
+            self.interfaces.error_xy_anterior[0] = error_xy[0]
+        if(vy==0):
+            self.interfaces.error_xy_anterior[1] = 0
+        else:
+            self.interfaces.error_xy_anterior[1] = error_xy[1]
+        if(vy==0):
+            self.interfaces.error_z_anterior = 0
+        else:
+            self.interfaces.error_z_anterior = error_z   
+        if(vy==0):
+            self.interfaces.error_w_anterior = 0
+        else:
+            self.interfaces.error_w_anterior = error_w       
+    else:
+        self.interfaces.error_xy_anterior = [0.0,0.0]
+        self.interfaces.error_z_anterior = 0.0
+        self.interfaces.error_w_anterior = 0.0
+        self.interfaces.vxi = 0.0
+        self.interfaces.vyi = 0.0
+        self.interfaces.vzi = 0.0
+        self.interfaces.vwi = 0.0
+
+    #Print Speeds
+    print (&quot;vz:%.3f&quot; % -vz,&quot;vy:%.3f&quot; % -vy,&quot;vx:%.3f&quot; % -vx,&quot;vw:%.3f&quot; % vw)
+    print &quot;*****&quot;
+    #Send Speeds
+    self.interfaces.myCmdvel.sendCMDVel(-vz,-vy,-vx,0,0,vw)</code>
+      <timestep>100</timestep>
+      <transition id="12">
+        <type>0</type>
+        <time>15000</time>
+        <posx>948.5</posx>
+        <posy>918.0</posy>
+        <name>Beacon Tracking time up</name>
+        <originid>1</originid>
+        <destinationid>11</destinationid>
+        <code></code>
+      </transition>
+    </state>
+    <state id="3" initial="True">
+      <posx>836.0</posx>
+      <posy>777.0</posy>
+      <name>Rotational Search</name>
+      <code>if self.interfaces.beaconCounter &gt;= (len(self.interfaces.beacons)):
+    #Landing Time
+    self.interfaces.timeToLand = True
+else:
+    self.interfaces.myCmdvel.sendCMDVel(0,0,0,0,0,-0.2)
+    inputImage = self.interfaces.myCamera.getImage()
+    inputImageData = inputImage.data
+    inputImageData_h = inputImage.height
+    inputImageData_w = inputImage.width
+    inputImageData.shape = inputImageData_h, inputImageData_w, 3
+    color = cv2.cvtColor(inputImageData, cv2.COLOR_RGB2BGR)
+#Apriltags Detection
+    gray = cv2.cvtColor(inputImageData, cv2.COLOR_RGB2GRAY)
+    #cv2.imshow(&quot;Image&quot;,gray)
+    #cv2.waitKey(30)
+    detections = self.interfaces.detector.detect(gray)
+    num_detections = len(detections)
+    #print self.interfaces.beacons[self.interfaces.beaconCounter]
+    for i, detection in enumerate(detections):
+        if (detection.tag_id == self.interfaces.beacons[self.interfaces.beaconCounter]):
+            self.interfaces.switchBeacon=True</code>
+      <timestep>100</timestep>
+      <transition id="9">
+        <type>1</type>
+        <condition>return self.interfaces.timeToLand</condition>
+        <posx>1126.5</posx>
+        <posy>779.0</posy>
+        <name>Landing Time</name>
+        <originid>3</originid>
+        <destinationid>4</destinationid>
+        <code></code>
+      </transition>
+      <transition id="11">
+        <type>1</type>
+        <condition>return self.interfaces.switchBeacon</condition>
+        <posx>836.0</posx>
+        <posy>883.5</posy>
+        <name>Beacon Found</name>
+        <originid>3</originid>
+        <destinationid>1</destinationid>
+        <code></code>
+      </transition>
+    </state>
+    <state id="4" initial="False">
+      <posx>1126.0</posx>
+      <posy>950.0</posy>
+      <name>Land</name>
+      <code>self.interfaces.myExtra.land()</code>
+      <timestep>100</timestep>
+    </state>
+    <state id="11" initial="False">
+      <posx>1047.0</posx>
+      <posy>870.0</posy>
+      <name>Switch Beacon</name>
+      <code>if(self.interfaces.switchBeacon):
+    self.interfaces.beaconCounter += 1
+    self.interfaces.switchBeacon = False
+</code>
+      <timestep>100</timestep>
+      <transition id="13">
+        <type>1</type>
+        <condition>return not self.interfaces.switchBeacon</condition>
+        <posx>944.0</posx>
+        <posy>822.0</posy>
+        <name>Beacon Switched</name>
+        <originid>11</originid>
+        <destinationid>3</destinationid>
+        <code></code>
+      </transition>
+    </state>
+  </state>
+</VisualStates>

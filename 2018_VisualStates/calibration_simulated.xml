@@ -1,0 +1,23 @@
+<data>
+    <colour name="Primary">
+        <Hmax>116</Hmax>
+        <Hmin>94</Hmin>
+        <Smax>255</Smax>
+        <Smin>1</Smin>
+        <Vmax>255</Vmax>
+        <Vmin>1</Vmin>
+        <Erosion>3</Erosion>
+        <Dilation>3</Dilation>
+<Dilation>0</Dilation>
+    </colour>
+    <colour name="Secondary">
+        <Hmax>70</Hmax>
+        <Hmin>56</Hmin>
+        <Smax>249</Smax>
+        <Smin>0</Smin>
+        <Vmax>255</Vmax>
+        <Vmin>0</Vmin>
+        <Erosion>3</Erosion>
+        <Dilation>3</Dilation>
+    </colour>
+</data>

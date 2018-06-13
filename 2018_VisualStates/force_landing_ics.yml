@@ -1,0 +1,23 @@
+force_landing:
+  NodeName: force_landing
+  myCamera:
+    Format: RGB8
+    Name: myCamera
+    Proxy: ardrone_camera:default -h 192.168.1.3 -p 9999
+    Server: 1
+    Topic: ''
+  myCmdvel:
+    Name: myCmdvel
+    Proxy: ardrone_cmdvel:default -h 192.168.1.3 -p 9995
+    Server: 1
+    Topic: ''
+  myExtra:
+    Name: myExtra
+    Proxy: ardrone_extra:default -h 192.168.1.3 -p 9994
+    Server: 1
+    Topic: ''
+  myPose:
+    Name: myPose
+    Proxy: ardrone_pose3d:default -h 192.168.1.3 -p 9998
+    Server: 1
+    Topic: ''

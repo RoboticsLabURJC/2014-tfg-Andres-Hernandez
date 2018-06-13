@@ -1,0 +1,7 @@
+force_takeoff:
+  NodeName: force_takeoff
+  myExtra:
+    Name: myExtra
+    Proxy: ardrone_extra:default -h 0.0.0.0 -p 9994
+    Server: 1
+    Topic: ''

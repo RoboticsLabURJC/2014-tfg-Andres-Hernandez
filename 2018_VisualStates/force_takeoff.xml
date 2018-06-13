@@ -1,0 +1,34 @@
+<?xml version="1.0" ?>
+<VisualStates>
+  <config type="0">
+    <interfaces>
+      <interface>
+        <serverType>ice</serverType>
+        <name>myExtra</name>
+        <topic></topic>
+        <proxyName>ardrone_extra</proxyName>
+        <ip>0.0.0.0</ip>
+        <port>9994</port>
+        <interfaceName>ArDroneExtra</interfaceName>
+      </interface>
+    </interfaces>
+  </config>
+  <functions></functions>
+  <variables></variables>
+  <libraries/>
+  <state id="0" initial="True">
+    <posx>0.0</posx>
+    <posy>0.0</posy>
+    <name>root</name>
+    <code></code>
+    <timestep>50</timestep>
+    <state id="4" initial="True">
+      <posx>885.0</posx>
+      <posy>809.0</posy>
+      <name>takeoff</name>
+      <code>self.interfaces.myExtra.takeoff()
+</code>
+      <timestep>100</timestep>
+    </state>
+  </state>
+</VisualStates>
