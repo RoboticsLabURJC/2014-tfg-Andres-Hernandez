@@ -1,0 +1,2076 @@
+<sdf version='1.6'>
+  <world name='default'>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <contact>
+              <collide_bitmask>65535</collide_bitmask>
+              <ode/>
+            </contact>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <model name='quadrotor'>
+      <plugin name='ardroneplugin' filename='libquadrotorplugin2.so'>
+        <alwaysOn>1</alwaysOn>
+        <updateRate>10.0</updateRate>
+        <bodyName>base_link</bodyName>
+        <velocityXYLimit>3</velocityXYLimit>
+        <velocityZLimit>5</velocityZLimit>
+        <takeoffSpeed>3</takeoffSpeed>
+        <takeoffCompletedAt>1.5</takeoffCompletedAt>
+        <landSpeed>1</landSpeed>
+        <landCompletedAt>0.2</landCompletedAt>
+        <offset>0</offset>
+        <drift>0.1</drift>
+        <motionSmallNoise>0</motionSmallNoise>
+        <motionDriftNoise>0</motionDriftNoise>
+        <motionDriftNoiseTime>1.0</motionDriftNoiseTime>
+        <rollpitchProportionalGain>10.0</rollpitchProportionalGain>
+        <rollpitchDifferentialGain>5.0</rollpitchDifferentialGain>
+        <rollpitchLimit>0.5</rollpitchLimit>
+        <yawProportionalGain>2.0</yawProportionalGain>
+        <yawDifferentialGain>1.0</yawDifferentialGain>
+        <yawLimit>1.5</yawLimit>
+        <velocityXYProportionalGain>5.0</velocityXYProportionalGain>
+        <velocityXYDifferentialGain>1.0</velocityXYDifferentialGain>
+        <velocityZProportionalGain>4.5</velocityZProportionalGain>
+        <velocityZDifferentialGain>0.5</velocityZDifferentialGain>
+        <velocityZIntegralGain>0.0</velocityZIntegralGain>
+        <iceConfigFile>quadrotorplugin2.cfg</iceConfigFile>
+      </plugin>
+      <link name='base_link'>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <inertial>
+          <mass>1.5</mass>
+          <pose frame=''>0.00254 0 7.3e-05 0 -0 0</pose>
+          <inertia>
+            <ixx>0.013721</ixx>
+            <ixy>0</ixy>
+            <ixz>-2.3e-05</ixz>
+            <iyy>0.014476</iyy>
+            <iyz>0</iyz>
+            <izz>0.024755</izz>
+          </inertia>
+        </inertial>
+        <collision name='base_link_geom'>
+          <laser_retro>0</laser_retro>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ArDrone2/meshes/quadrotor/quadrotor_4.stl</uri>
+            </mesh>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>-1</mu>
+                <mu2>-1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>100000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+12</kp>
+                <kd>1</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_geom_visual'>
+          <cast_shadows>1</cast_shadows>
+          <laser_retro>0</laser_retro>
+          <transparency>0</transparency>
+          <geometry>
+            <mesh>
+              <uri>model://ArDrone2/meshes/quadrotor/quadrotor_4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <collision name='base_link_geom_ardrone_base_bottomcam'>
+          <laser_retro>0</laser_retro>
+          <pose frame=''>0.15 0 0 -0 -0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.001 0.001 0.001</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>-1</mu>
+                <mu2>-1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>100000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+12</kp>
+                <kd>1</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_geom_ardrone_base_bottomcam_visual'>
+          <cast_shadows>1</cast_shadows>
+          <laser_retro>0</laser_retro>
+          <transparency>0</transparency>
+          <pose frame=''>0.15 0 -0 -0 -0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.001 0.001 0.001</size>
+            </box>
+          </geometry>
+        </visual>
+        <collision name='base_link_geom_ardrone_base_frontcam'>
+          <laser_retro>0</laser_retro>
+          <pose frame=''>0.21 0 0.01 -1.5708 -0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.001 0.001 0.001</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>-1</mu>
+                <mu2>-1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>100000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+12</kp>
+                <kd>1</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_geom_ardrone_base_frontcam_visual'>
+          <cast_shadows>1</cast_shadows>
+          <laser_retro>0</laser_retro>
+          <transparency>0</transparency>
+          <pose frame=''>0.21 -0 0.01 -1.5708 -0 -1.5708</pose>
+          <geometry>
+            <box>
+              <size>0.001 0.001 0.001</size>
+            </box>
+          </geometry>
+        </visual>
+        <collision name='base_link_geom_bottom_link'>
+          <laser_retro>0</laser_retro>
+          <pose frame=''>0.15 0 0 -3.14159 -1.57079 -3.14159</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>-1</mu>
+                <mu2>-1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>100000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+12</kp>
+                <kd>1</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_geom_bottom_link_visual'>
+          <cast_shadows>1</cast_shadows>
+          <laser_retro>0</laser_retro>
+          <transparency>0</transparency>
+          <pose frame=''>0.15 0 0 3.14159 -1.57079 3.14159</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>__default__</uri>
+              <name>__default__</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='base_link_geom_front_link'>
+          <laser_retro>0</laser_retro>
+          <pose frame=''>0.21 0 0.01 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>-1</mu>
+                <mu2>-1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>100000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+12</kp>
+                <kd>1</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_geom_front_link_visual'>
+          <cast_shadows>1</cast_shadows>
+          <laser_retro>0</laser_retro>
+          <transparency>0</transparency>
+          <pose frame=''>0.21 0 0.01 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>__default__</uri>
+              <name>__default__</name>
+            </script>
+          </material>
+        </visual>
+        <collision name='base_link_geom_sonar_link'>
+          <laser_retro>0</laser_retro>
+          <pose frame=''>-0.15 0 0 -3.14159 1.57079 -3.14159</pose>
+          <geometry>
+            <box>
+              <size>0.01 0.01 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>-1</mu>
+                <mu2>-1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>100000</threshold>
+            </bounce>
+            <contact>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+12</kp>
+                <kd>1</kd>
+                <max_vel>100</max_vel>
+                <min_depth>0.001</min_depth>
+              </ode>
+            </contact>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='base_link_geom_sonar_link_visual'>
+          <cast_shadows>1</cast_shadows>
+          <laser_retro>0</laser_retro>
+          <transparency>0</transparency>
+          <pose frame=''>-0.15 0 0 3.14159 1.57079 3.14159</pose>
+          <geometry>
+            <mesh>
+              <uri>model://ArDrone2/meshes/sonar_sensor/max_sonar_ez4.dae</uri>
+            </mesh>
+          </geometry>
+        </visual>
+        <sensor name='cam_sensor_ventral' type='camera'>
+          <always_on>0</always_on>
+          <update_rate>60</update_rate>
+          <visualize>0</visualize>
+          <pose frame=''>0.15 0 0 0 1.57079 0</pose>
+          <camera name='__default__'>
+            <horizontal_fov>1.41372</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.01</near>
+              <far>100</far>
+            </clip>
+          </camera>
+        </sensor>
+        <sensor name='cam_sensor_frontal' type='camera'>
+          <always_on>0</always_on>
+          <update_rate>60</update_rate>
+          <visualize>0</visualize>
+          <pose frame=''>0.21 0 0.01 0 -0 0</pose>
+          <camera name='__default__'>
+            <horizontal_fov>1.41372</horizontal_fov>
+            <image>
+              <width>320</width>
+              <height>240</height>
+              <format>R8G8B8</format>
+            </image>
+            <clip>
+              <near>0.01</near>
+              <far>100</far>
+            </clip>
+          </camera>
+        </sensor>
+        <sensor name='sonar' type='ray'>
+          <always_on>0</always_on>
+          <update_rate>10</update_rate>
+          <visualize>0</visualize>
+          <pose frame=''>-0.15 0 0 -3.14159 1.57079 -3.14159</pose>
+          <ray>
+            <scan>
+              <horizontal>
+                <samples>3</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.349066</min_angle>
+                <max_angle>0.349066</max_angle>
+              </horizontal>
+              <vertical>
+                <samples>3</samples>
+                <resolution>1</resolution>
+                <min_angle>-0.349066</min_angle>
+                <max_angle>0.349066</max_angle>
+              </vertical>
+            </scan>
+            <range>
+              <min>0.01</min>
+              <max>3</max>
+              <resolution>0.01</resolution>
+            </range>
+          </ray>
+        </sensor>
+        <sensor name='imu_sensor' type='imu'>
+          <update_rate>20</update_rate>
+        </sensor>
+      </link>
+      <pose frame=''>0 0 0.7 0 -0 0</pose>
+    </model>
+    <light name='sun' type='directional'>
+      <cast_shadows>1</cast_shadows>
+      <pose frame=''>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+    </light>
+    <model name='House 3'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <mesh>
+              <uri>model://house_3/meshes/house_3.dae</uri>
+            </mesh>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual'>
+          <geometry>
+            <mesh>
+              <uri>model://house_3/meshes/house_3.dae</uri>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://house_3/materials/scripts</uri>
+              <uri>model://house_3/materials/textures</uri>
+              <uri>model://house_1/materials/textures</uri>
+              <name>House_3/Diffuse</name>
+            </script>
+            <shader type='normal_map_object_space'>
+              <normal_map>model://house_1/materials/textures/House_1_Normal.png</normal_map>
+            </shader>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+      </link>
+      <pose frame=''>3 6.43 0 0 -0 0</pose>
+    </model>
+    <model name='color_beacon'>
+      <link name='link_1'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+        </inertial>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1 1 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://color_beacon/materials/scripts</uri>
+              <uri>model://color_beacon/materials/textures</uri>
+              <name>color_beacon</name>
+            </script>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1 1 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose frame=''>4 0 0 0 -0 0</pose>
+    </model>
+    <model name='posAprilTags'>
+      <model name='tag_0'>
+        <pose frame=''>-0.5 2 3 -2.07079 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00000</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_1'>
+        <pose frame=''>2.5 1 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00001</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_2'>
+        <pose frame=''>-2.5 9 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00002</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_3'>
+        <pose frame=''>-1.5 12 3.3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00003</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_4'>
+        <pose frame=''>1 12.8 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00004</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_5'>
+        <pose frame=''>-2.5 5.5 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00005</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_6'>
+        <pose frame=''>6 12.8 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00006</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_7'>
+        <pose frame=''>0 12 2.7 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00007</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_8'>
+        <pose frame=''>12.1 10.4 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00008</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_9'>
+        <pose frame=''>11.5 12 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00009</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_10'>
+        <pose frame=''>12.1 5.6 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00010</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_11'>
+        <pose frame=''>10 12.2 2.7 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00011</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_12'>
+        <pose frame=''>3 12 2.7 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00012</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_13'>
+        <pose frame=''>12.1 8 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.02 0.3 0.3</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00013</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_14'>
+        <pose frame=''>12.2 3.2 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.02 0.3</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00014</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_15'>
+        <pose frame=''>-1.3 2 2.5 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.02 0.3 0.3</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00015</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_16'>
+        <pose frame=''>11.5 1.2 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00016</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_17'>
+        <pose frame=''>1 0 2.3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00035</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_18'>
+        <pose frame=''>-2.5 2.5 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00018</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_19'>
+        <pose frame=''>7.2 12 3.5 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00019</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_20'>
+        <pose frame=''>8.5 12.8 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00020</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_21'>
+        <pose frame=''>-3.5 11 3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00021</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_22'>
+        <pose frame=''>4.5 12 3.3 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00022</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <model name='tag_23'>
+        <pose frame=''>1.2 1 2.5 3.14159 -1.57079 3.14159</pose>
+        <static>1</static>
+        <link name='link'>
+          <collision name='collision'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <max_contacts>10</max_contacts>
+            <surface>
+              <contact>
+                <ode/>
+              </contact>
+              <bounce/>
+              <friction>
+                <torsional>
+                  <ode/>
+                </torsional>
+                <ode/>
+              </friction>
+            </surface>
+          </collision>
+          <visual name='visual'>
+            <geometry>
+              <box>
+                <size>0.3 0.3 0.02</size>
+              </box>
+            </geometry>
+            <material>
+              <script>
+                <uri>file://tags_material/scripts/tags.material</uri>
+                <name>Tag36_11_00023</name>
+              </script>
+            </material>
+          </visual>
+          <self_collide>0</self_collide>
+          <kinematic>0</kinematic>
+        </link>
+        <static>0</static>
+      </model>
+      <pose frame=''>0 0 0 0 -0 0</pose>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics name='default_physics' default='0' type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>0</latitude_deg>
+      <longitude_deg>0</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>0</heading_deg>
+    </spherical_coordinates>
+    <model name='color_beacon_0'>
+      <link name='link_1'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <inertial>
+          <mass>1</mass>
+          <inertia>
+            <ixx>0.166667</ixx>
+            <ixy>0</ixy>
+            <ixz>0</ixz>
+            <iyy>0.166667</iyy>
+            <iyz>0</iyz>
+            <izz>0.166667</izz>
+          </inertia>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+        </inertial>
+        <gravity>1</gravity>
+        <self_collide>0</self_collide>
+        <kinematic>0</kinematic>
+        <visual name='visual'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1 1 0.01</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://color_beacon/materials/scripts</uri>
+              <uri>model://color_beacon/materials/textures</uri>
+              <name>color_beacon</name>
+            </script>
+          </material>
+          <transparency>0</transparency>
+          <cast_shadows>1</cast_shadows>
+        </visual>
+        <collision name='collision'>
+          <laser_retro>0</laser_retro>
+          <max_contacts>10</max_contacts>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+            <box>
+              <size>1 1 0.01</size>
+            </box>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>1</mu>
+                <mu2>1</mu2>
+                <fdir1>0 0 0</fdir1>
+                <slip1>0</slip1>
+                <slip2>0</slip2>
+              </ode>
+              <torsional>
+                <coefficient>1</coefficient>
+                <patch_radius>0</patch_radius>
+                <surface_radius>0</surface_radius>
+                <use_patch_radius>1</use_patch_radius>
+                <ode>
+                  <slip>0</slip>
+                </ode>
+              </torsional>
+            </friction>
+            <bounce>
+              <restitution_coefficient>0</restitution_coefficient>
+              <threshold>1e+06</threshold>
+            </bounce>
+            <contact>
+              <collide_without_contact>0</collide_without_contact>
+              <collide_without_contact_bitmask>1</collide_without_contact_bitmask>
+              <collide_bitmask>1</collide_bitmask>
+              <ode>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+                <max_vel>0.01</max_vel>
+                <min_depth>0</min_depth>
+              </ode>
+              <bullet>
+                <split_impulse>1</split_impulse>
+                <split_impulse_penetration_threshold>-0.01</split_impulse_penetration_threshold>
+                <soft_cfm>0</soft_cfm>
+                <soft_erp>0.2</soft_erp>
+                <kp>1e+13</kp>
+                <kd>1</kd>
+              </bullet>
+            </contact>
+          </surface>
+        </collision>
+      </link>
+      <static>0</static>
+      <allow_auto_disable>1</allow_auto_disable>
+      <pose frame=''>-0.703989 0.503428 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>180 717000000</sim_time>
+      <real_time>132 895944051</real_time>
+      <wall_time>1526382687 11896893</wall_time>
+      <iterations>127747</iterations>
+      <model name='House 3'>
+        <pose frame=''>3 6.43 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>3 6.43 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='color_beacon'>
+        <pose frame=''>4 0 0.005 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link_1'>
+          <pose frame=''>4 0 0.005 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 2.1e-05 -2.1e-05 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='color_beacon_0'>
+        <pose frame=''>-0.704278 0.500158 0.004979 -2.3e-05 1.8e-05 0.007564</pose>
+        <scale>1 1 1</scale>
+        <link name='link_1'>
+          <pose frame=''>-0.704278 0.500158 0.004979 -2.3e-05 1.8e-05 0.007564</pose>
+          <velocity>-0.002136 0.002244 -0.015078 -0.016536 0.013619 0.004367</velocity>
+          <acceleration>-2.13621 2.24438 -15.078 2.31338 1.05268 -1.91572</acceleration>
+          <wrench>-2.13621 2.24438 -15.078 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='ground_plane'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose frame=''>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='posAprilTags'>
+        <pose frame=''>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <model name='tag_0'>
+          <pose frame=''>-0.5 2 3 -2.07079 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>-0.5 2 3 -2.07079 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_1'>
+          <pose frame=''>2.5 1 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>2.5 1 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_10'>
+          <pose frame=''>12.1 5.6 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>12.1 5.6 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_11'>
+          <pose frame=''>10 12.2 2.7 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>10 12.2 2.7 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_12'>
+          <pose frame=''>3 12 2.7 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>3 12 2.7 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_13'>
+          <pose frame=''>12.1 8 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>12.1 8 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_14'>
+          <pose frame=''>12.2 3.2 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>12.2 3.2 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_15'>
+          <pose frame=''>-1.3 2 2.5 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>-1.3 2 2.5 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_16'>
+          <pose frame=''>11.5 1.2 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>11.5 1.2 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_17'>
+          <pose frame=''>1 0 2.3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>1 0 2.3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_18'>
+          <pose frame=''>-2.5 2.5 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>-2.5 2.5 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_19'>
+          <pose frame=''>7.2 12 3.5 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>7.2 12 3.5 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_2'>
+          <pose frame=''>-2.5 9 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>-2.5 9 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_20'>
+          <pose frame=''>8.5 12.8 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>8.5 12.8 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_21'>
+          <pose frame=''>-3.5 11 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>-3.5 11 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_22'>
+          <pose frame=''>4.5 12 3.3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>4.5 12 3.3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_23'>
+          <pose frame=''>1.2 1 2.5 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>1.2 1 2.5 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_3'>
+          <pose frame=''>-1.5 12 3.3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>-1.5 12 3.3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_4'>
+          <pose frame=''>1 12.8 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>1 12.8 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_5'>
+          <pose frame=''>-2.5 5.5 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>-2.5 5.5 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_6'>
+          <pose frame=''>6 12.8 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>6 12.8 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_7'>
+          <pose frame=''>0 12 2.7 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>0 12 2.7 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_8'>
+          <pose frame=''>12.1 10.4 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>12.1 10.4 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+        <model name='tag_9'>
+          <pose frame=''>11.5 12 3 3.14159 -1.57079 3.14159</pose>
+          <scale>1 1 1</scale>
+          <link name='link'>
+            <pose frame=''>11.5 12 3 3.14159 -1.57079 3.14159</pose>
+            <velocity>0 0 0 0 -0 0</velocity>
+            <acceleration>0 0 0 0 -0 0</acceleration>
+            <wrench>0 0 0 0 -0 0</wrench>
+          </link>
+        </model>
+      </model>
+      <model name='quadrotor'>
+        <pose frame=''>-0.59642 0.365517 0.04998 -2e-06 8e-06 0.115398</pose>
+        <scale>1 1 1</scale>
+        <link name='base_link'>
+          <pose frame=''>-0.59642 0.365517 0.04998 -2e-06 8e-06 0.115398</pose>
+          <velocity>-0.001597 0.001684 -0.006409 0.001989 0.013831 -0.001561</velocity>
+          <acceleration>3.26555 -0.996847 -2.2831 -0.167543 0.373035 -1.738</acceleration>
+          <wrench>4.89833 -1.49527 -3.42466 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose frame=''>0 0 10 0 -0 0</pose>
+      </light>
+      <light name='user_directional_light_0'>
+        <pose frame=''>-9.18673 -0.701677 1 2.68318 1.55 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose frame=''>-24.7947 -3.56845 13.8145 0 0.443643 0.132195</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+    <light name='user_directional_light_0' type='directional'>
+      <pose frame=''>-9.18673 7.29832 1 0 -0 0</pose>
+      <diffuse>0.5 0.5 0.5 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>0.1 0.1 -0.9</direction>
+      <attenuation>
+        <range>20</range>
+        <constant>0.5</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <cast_shadows>1</cast_shadows>
+    </light>
+  </world>
+</sdf>
