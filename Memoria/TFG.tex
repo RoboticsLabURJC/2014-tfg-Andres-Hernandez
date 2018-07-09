@@ -1,120 +1,150 @@
-\documentclass[a4paper,11pt,twoside]{book}
-
-% PAQUETES UTILIZADOS __________________________________________________
-\usepackage[spanish,activeacute]{babel}
-\usepackage[latin1]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{amsmath,amsfonts,amssymb,latexsym}
-\usepackage{graphicx}
-\usepackage[colorlinks=false,linkcolor=black]{hyperref}
+\documentclass[a4paper, 12pt, oneside]{book}
+% Dimensiones y m谩rgenes----------------------------------------------
+\usepackage[%
+    left=1.2in,%
+    right=1.2in,%
+    top=1.2in,%
+    bottom=1.5in,%
+    paperheight=11in,%
+    paperwidth=8.5in%
+]{geometry}
+\parindent=1cm
+% Otros paquetes -----------------------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{layout}
+\usepackage{emptypage}
 \usepackage{fancyhdr}
+\usepackage{cite}
 \usepackage{caption}
-\usepackage{subfigure}
-\usepackage[toc,page]{appendix}
+\usepackage{mathtools}
+\usepackage{hyperref}
+\usepackage[all]{xy}
+\usepackage{listings}
+\usepackage[spanish]{babel}
+\usepackage{url}
+\usepackage{float}
+\usepackage{eurosym}
+\usepackage{multirow}
+\usepackage{rotating} 
+\usepackage{color}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+\usepackage[spanish]{babel}
+\usepackage{enumerate}
+\usepackage{subfig}
+\usepackage{afterpage}
+\usepackage[acronym, nonumberlist]{glossaries}
+\lstset{escapeinside={<@}{@>}}
+\makeglossaries
+\makeatletter
+\renewcommand{\baselinestretch}{1.4}
+\setlength{\headheight}{16pt} 
+\captionsetup{justification=justified}
+\pretolerance=1000
 
-%\usepackage{longtable}
-%\usepackage{multicol}
-%\usepackage{multirow}
-
-%\usepackage{gloss}
-%\usepackage{makeidx}
-
-
-% DEFINICI覰 DEL ESTILO ________________________________________________
-\input{./Estilo/EstiloEnPreambulo}
-
-%\makeindex
-% Para hacer el 蚽dice Alfab閠ico.
-
-%\makegloss
-% Para hacer el Glosario.
-
+%---------------------------------------------------------------------
 \begin{document}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\frontmatter
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{titlepage}
+	\begin{center}
+		\vspace*{1mm}
+		\begin{center}
+			\includegraphics[width=0.8\linewidth]{imag/logo.jpg}
+		\end{center}
+		\vspace{6.5mm}
+		
+		\fontsize{15.5}{14}\selectfont ESCUELA T脡CNICA SUPERIOR DE INGENIER脥A DE TELECOMUNICACI脫N
+		\vspace{8mm}
+		
+		\fontsize{14}{14}\selectfont GRADO EN INGENIER脥A TELEM脕TICA
+		
+		\vspace{60pt}
+		
+		\fontfamily{lmss}\fontsize{15.7}{14}\selectfont \textbf{TRABAJO FIN DE GRADO} 
+		
+		\vspace{15mm}
+		\begin{huge}
+			Navegaci贸n aut贸noma de rutas 3D en un entorno real
+		\end{huge}
+		
+		\vspace{15mm}
+		
+		\begin{large}
+			Autor: Andres de Jes煤s Hern谩ndez Escobar
+			
+			Tutor: Jos茅 Mar铆a Ca帽as Plaza
+			
+			\vspace{7mm}
+		\end{large}
+		\begin{normalsize}
+			Curso acad茅mico 2017/2018		
+		\end{normalsize}
+	\end{center}
+\end{titlepage}
 
-% DEFINICI覰 DEL ESTILO ________________________________________________
-\input{./Estilo/EstiloEnDocumento}
-
-
-% PORTADA EXTERIOR _____________________________________________________
 \thispagestyle{empty}
-\input{./General/Portada}
-\newpage \thispagestyle{empty} \cleardoublepage
-% P醙ina en blanco detr醩.
+\afterpage{\null\newpage}
+\newpage
 
-% DEDICATORIA __________________________________________________________
-\thispagestyle{empty}
-\input{./General/Dedicatoria}
-\newpage \thispagestyle{empty} \cleardoublepage
+\chapter*{Agradecimientos}
+\pagenumbering{Roman}
+En primer lugar, quiero agradecer a mi tutor Jose Mar铆a por su motivaci贸n, paciencia y la confianza que ha depositado en m铆.
 
-% AGRADECIMIENTOS ______________________________________________________
-\thispagestyle{empty}
-\input{./General/Agradecimientos.tex}
-\newpage \thispagestyle{empty} \cleardoublepage
+A mi familia, por apoyarme no s贸lo durante este proyecto sino a lo largo de mi trayectoria hasta llegar aqu铆.
 
-% 蚇DICE DE CONTENIDOS _________________________________________________
-\tableofcontents
-\newpage \thispagestyle{empty} \cleardoublepage
+Y a Layla, por los buenos momentos, comprensi贸n y apoyo durante la carrera y el desarrollo de este proyecto que parec铆a no tener fin.
 
-% RESUMEN ______________________________________________________________
-\thispagestyle{empty}
-\input{./General/Resumen}
-\newpage \thispagestyle{empty} \cleardoublepage
+\chapter*{Resumen}
+La rob贸tica y los robots cada vez m谩s est谩n encaminados hacia resolver tareas aut贸nomamente y a un menor tiempo de supervisi贸n humana. La consolidaci贸n de esta autonom铆a acerca un futuro cada vez m谩s pr贸ximo en el que las m谩quinas ganar谩n independencia y podr谩n realizar m煤ltiples tareas por su cuenta, ganando en flexibilidad y aprovechamiento de los recursos. Este Trabajo de Fin de Grado se enfoca en dotar de navegaci贸n aut贸noma a un drone real.
+ 
+Con el fin de demostrar esta autonom铆a, el cuadric贸ptero deber谩 despegar, navegar en un entorno de 3D siguiendo una ruta y aterrizar, todo esto sin asistencia por parte de un teleoperador humano. Hemos programado el drone dividiendo esta tarea en cuatro fases m谩s sencillas que son: el despegue controlado, b煤squeda de balizas visuales, la navegaci贸n a partir de la autolocalizaci贸n relativa y por 煤ltimo el aterrizaje controlado. Se utilizan dos tipos diferentes de balizas visuales, que act煤an a modo de referencia o identificador 煤nico, unas para aterrizar o despegar y otras para navegar. Se ha integrado todo en una aplicaci贸n basada en un aut贸mata de estados finito. Este aut贸mata se ha dise帽ado empleando la herramienta \textsc{Visual States}. El componente final desarrollado, llamado \textit{3DPathFollower}, se ha escrito en el lenguaje de programaci贸n Python, en la versi贸n de JdeRobot 5.6.4. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mainmatter
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% CAP蚑ULOS ____________________________________________________________
-\renewcommand{\chaptermark}[1]{\markboth{#1 (C.\ \thechapter)}{}}
-\fancyhead[RO]{{\footnotesize{\itshape\rightmark\ /} \thepage}}
-% En las IMPARES, a la derecha: T韙ulo de la secci髇, Barra, N鷐ero de p醙ina.
-
-\input{./Capitulos/Intro}
-\newpage \thispagestyle{empty} \cleardoublepage
-\input{./Capitulos/Objetivos}
-\newpage \thispagestyle{empty} \cleardoublepage
-\input{./Capitulos/MatMet}
-\newpage \thispagestyle{empty} \cleardoublepage
-\input{./Capitulos/Desarrollo}
-\newpage \thispagestyle{empty} \cleardoublepage
-\input{./Capitulos/Resul}
-\newpage \thispagestyle{empty} \cleardoublepage
-\input{./Capitulos/Conclu}
-\newpage \thispagestyle{empty} \cleardoublepage
+Se ha validado experimentalmente la aplicaci贸n desarrollada y la infraestructura en un drone real. Para ello, se han realizado tanto experimentos unitarios como globales. Se han comprobado dos configuraciones. Una con todo el procesado todo el procesado de manera externa y otra completamente a bordo del drone en un ordenador embarcado.
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\backmatter
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\tablename}{Tabla}
+\tableofcontents % indice de contenido
 
-%\pagenumbering{Roman}%
+\listoffigures % indice de figuras
+\addcontentsline{toc}{chapter}{脥ndice de figuras}
+\cleardoublepage
 
-% BIBLIOGRAF虯 _________________________________________________________
-\bibliographystyle{./Bibliografia/IEEEtran}
-\bibliography{./Bibliografia/RefsPFC}
-\addcontentsline{toc}{chapter}{\bibname}
-\newpage \thispagestyle{empty} \cleardoublepage
-\nocite{*} % [Sin comentar] Incluye todas las referencias, hayan sido citadas o no.
+\pagestyle{fancy}
+\pagenumbering{arabic}
+\setlength{\parindent}{6mm}
 
-% 蚇DICE DE TABLAS _____________________________________________________
-%\listoftables \addcontentsline{toc}{chapter}{\listtablename}
-%\newpage \thispagestyle{empty} \cleardoublepage
+\lhead[]{}
+\include{1-Introduccion}
+%\lhead[]{CAP脥TULO \thechapter. OBJETIVOS}
+\include{2-Objetivos}
+%\lhead[]{CAP脥TULO \thechapter. INFRAESTRUCTURA}
+\include{3-Infraestructura}
+%\lhead[]{CAP脥TULO \thechapter. ALGORITMO}
+\include{4-Desarrollo}
+%\lhead[]{CAP脥TULO \thechapter. EXPERIMENTOS}
+\include{5-Experimentos}
+%\lhead[]{CAP脥TULO \thechapter. Conclusiones}
+\include{6-Conclusiones}
 
+\addcontentsline{toc}{chapter}{Bibliograf铆a}
+\begin{thebibliography}{X}
+\bibitem{AlbertoMartin} \textsc{Alberto Mart铆n Florido.} Navegaci贸n visual en un cuadric贸ptero para el seguimiento de objetos. \textit{Trabajo Fin de Grado}, URJC, 2014.	
 
-%% 蚇DICE DE ALFAB蒚ICO ________________________________________________
-%{
-%\twocolumn \small \setlength{\columnsep}{2cm}
-%\printindex \addcontentsline{toc}{chapter}{\indexname}
-%}
-%\newpage \thispagestyle{empty} \cleardoublepage
-%
-%\onecolumn
+\bibitem{DanielYague} \textsc{Daniel Yag眉e S谩nchez.} Cuadric贸ptero AR.Drone en Gazebo y JdeRobot. \textit{Proyecto Fin de Carrera,} URJC, 2014.
 
+\bibitem{AlbertoLopez} \textsc{Alberto L贸pez-Cer贸n Pinilla.} Autolocalizaci贸n visual robusta basada en marcadores. \textit{Trabajo Fin de Master}, URJC, 2015.
+
+\bibitem{ManuelZafra} \textsc{Manuel Zafra Villar.} Seguimiento de rutas 3D por un drone con autolocalizaci贸n visual con balizas. \textit{Trabajo Fin de Grado} URJC, 2016.
+
+\bibitem{JorgeVela} \textsc{Jorge Vela Pe帽a.} Despegue, navegaci贸n y aterrizaje visuales de un drone usando JdeRobot. \textit{Trabajo Fin de Grado} URJC, 2017. 
+
+\bibitem{JesusSaiz} \textsc{Jes煤s Saiz Colomina.} Programaci贸n de un dron para seguimiento aut贸nomo de trayectorias en 3D. \textit{Trabajo Fin de Grado} URJC, 2018.
+
+%\bibitem{AprilTags2} \textsc{John Wang} y \textsc{Edwin Olson}, AprilTag 2: Efficient and robust fiducial detection. \textit{Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)}, Octubre 2016.
+
+%\bibitem{WorldRobotics} \textsc{International Federation of Robotics}, World Robotics 2017
+
+\end{thebibliography} 
 
 \end{document}
-
-
-
