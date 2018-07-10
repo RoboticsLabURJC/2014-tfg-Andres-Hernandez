@@ -1,0 +1,60 @@
+\BOOKMARK [0][-]{chapter*.4}{\315ndice de figuras}{}% 1
+\BOOKMARK [0][-]{chapter.1}{Introducci\363n}{}% 2
+\BOOKMARK [1][-]{section.1.1}{Rob\363tica}{chapter.1}% 3
+\BOOKMARK [2][-]{subsection.1.1.1}{Aplicaciones actuales}{section.1.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Software en robots}{chapter.1}% 5
+\BOOKMARK [2][-]{subsection.1.2.1}{Simulaci\363n}{section.1.2}% 6
+\BOOKMARK [1][-]{section.1.3}{Visi\363n artificial en robots}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.4}{Rob\363tica A\351rea}{chapter.1}% 8
+\BOOKMARK [2][-]{subsection.1.4.1}{Aplicaciones actuales}{section.1.4}% 9
+\BOOKMARK [0][-]{chapter.2}{Objetivos}{}% 10
+\BOOKMARK [1][-]{section.2.1}{Problema a abordar}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.2}{Requisitos}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.3}{Metodolog\355a}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.4}{Planificaci\363n}{chapter.2}% 14
+\BOOKMARK [0][-]{chapter.3}{Infraestructura}{}% 15
+\BOOKMARK [1][-]{section.3.1}{Parrot Ar.Drone 2}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.2}{Intel Compute Stick}{chapter.3}% 17
+\BOOKMARK [1][-]{section.3.3}{Biblioteca OpenCV}{chapter.3}% 18
+\BOOKMARK [1][-]{section.3.4}{Biblioteca AprilTags}{chapter.3}% 19
+\BOOKMARK [1][-]{section.3.5}{Entorno JdeRobot}{chapter.3}% 20
+\BOOKMARK [2][-]{subsection.3.5.1}{Ardrone\137Server}{section.3.5}% 21
+\BOOKMARK [2][-]{subsection.3.5.2}{Teleoperadores uav\137viewer y uav\137viewer\137py}{section.3.5}% 22
+\BOOKMARK [2][-]{subsection.3.5.3}{Herramienta Color Tuner}{section.3.5}% 23
+\BOOKMARK [2][-]{subsection.3.5.4}{Componente slam\137markers}{section.3.5}% 24
+\BOOKMARK [2][-]{subsection.3.5.5}{VisualStates}{section.3.5}% 25
+\BOOKMARK [1][-]{section.3.6}{Bibliotecas ICE}{chapter.3}% 26
+\BOOKMARK [1][-]{section.3.7}{Simulador Gazebo}{chapter.3}% 27
+\BOOKMARK [0][-]{chapter.4}{Navegaci\363n aut\363noma de un drone guiado por balizas visuales}{}% 28
+\BOOKMARK [1][-]{section.4.1}{Dise\361o}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.2}{Detecci\363n visual de las balizas}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.2.1}{Balizas de aterrizaje y despegue}{section.4.2}% 31
+\BOOKMARK [2][-]{subsection.4.2.2}{Balizas de autolocalizaci\363n}{section.4.2}% 32
+\BOOKMARK [1][-]{section.4.3}{Aut\363mata de navegaci\363n}{chapter.4}% 33
+\BOOKMARK [2][-]{subsection.4.3.1}{Estado de despegue controlado}{section.4.3}% 34
+\BOOKMARK [2][-]{subsection.4.3.2}{Estados de navegaci\363n guiada por balizas}{section.4.3}% 35
+\BOOKMARK [2][-]{subsection.4.3.3}{Estados de aterrizaje}{section.4.3}% 36
+\BOOKMARK [1][-]{section.4.4}{Configuraci\363n}{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.4.1}{Configuraci\363n de la percepci\363n}{section.4.4}% 38
+\BOOKMARK [2][-]{subsection.4.4.2}{Configuraci\363n de interfaces}{section.4.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.3}{Configuraci\363n de la secuencia de balizas}{section.4.4}% 40
+\BOOKMARK [1][-]{section.4.5}{Herramienta CalibrationTool}{chapter.4}% 41
+\BOOKMARK [0][-]{chapter.5}{Experimentos}{}% 42
+\BOOKMARK [1][-]{section.5.1}{Pruebas en Simulador}{chapter.5}% 43
+\BOOKMARK [2][-]{subsection.5.1.1}{Elecci\363n de balizas de despegue y aterrizaje}{section.5.1}% 44
+\BOOKMARK [2][-]{subsection.5.1.2}{Ajuste del control de navegaci\363n}{section.5.1}% 45
+\BOOKMARK [2][-]{subsection.5.1.3}{Ejecuci\363n t\355pica integral}{section.5.1}% 46
+\BOOKMARK [1][-]{section.5.2}{Pruebas con el drone real y PC externo}{chapter.5}% 47
+\BOOKMARK [2][-]{subsection.5.2.1}{Ajuste del control de navegaci\363n}{section.5.2}% 48
+\BOOKMARK [2][-]{subsection.5.2.2}{Desfase entre im\341genes y \363rdenes}{section.5.2}% 49
+\BOOKMARK [2][-]{subsection.5.2.3}{Problemas con la detecci\363n de las balizas arlequinadas}{section.5.2}% 50
+\BOOKMARK [2][-]{subsection.5.2.4}{Ejecuci\363n t\355pica integral}{section.5.2}% 51
+\BOOKMARK [1][-]{section.5.3}{Pruebas con el drone real y un miniordenador}{chapter.5}% 52
+\BOOKMARK [2][-]{subsection.5.3.1}{Preparaci\363n y configuraci\363n del miniordenador}{section.5.3}% 53
+\BOOKMARK [2][-]{subsection.5.3.2}{Teleoperaci\363n con miniordenador a bordo}{section.5.3}% 54
+\BOOKMARK [2][-]{subsection.5.3.3}{Retardo detectado en uav\137viewer\137py}{section.5.3}% 55
+\BOOKMARK [2][-]{subsection.5.3.4}{Ejecuci\363n t\355pica con el miniordenador en tierra}{section.5.3}% 56
+\BOOKMARK [0][-]{chapter.6}{Conclusiones}{}% 57
+\BOOKMARK [1][-]{section.6.1}{Conclusiones}{chapter.6}% 58
+\BOOKMARK [1][-]{section.6.2}{Trabajos futuros}{chapter.6}% 59
+\BOOKMARK [0][-]{section.6.2}{Bibliograf\355a}{}% 60

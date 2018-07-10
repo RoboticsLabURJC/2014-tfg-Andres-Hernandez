@@ -1,0 +1,70 @@
+\select@language {spanish}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Ejemplos de robots\relax }}{3}{figure.caption.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {\textit {Curiosity} en Marte}}}{3}{subfigure.1.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Teleoperaci\IeC {\'o}n m\IeC {\'e}dica}}}{3}{subfigure.1.2}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Ventas anuales estimadas de robots industriales por regiones\relax }}{4}{figure.caption.7}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Aplicaciones en la actualidad\relax }}{6}{figure.caption.9}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Tecnolog\IeC {\'\i }a Tesla autopilot}}}{6}{subfigure.3.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Secuencia de seguimiento de un Airdog}}}{6}{subfigure.3.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Robot PEPPER en un aula como complemento educador}}}{6}{subfigure.3.3}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Personas simuladas en Gazebo\relax }}{7}{figure.caption.10}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Visi\IeC {\'o}n artificial en robots\relax }}{10}{figure.caption.11}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Reconocimiento de objetos en imagen}}}{10}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Reconstrucci\IeC {\'o}n de mapas con t\IeC {\'e}cnicas SLAM}}}{10}{subfigure.5.2}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces UAV Predator.\relax }}{10}{figure.caption.12}
+\contentsline {figure}{\numberline {1.7}{\ignorespaces Ejemplos de UAV civiles\relax }}{12}{figure.caption.13}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Modelo utilizado por Amazon Air Prime.}}}{12}{subfigure.7.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Actuaci\IeC {\'o}n de drones masivos durante la de apertura de los J.J.O.O de Invierno 2018}}}{12}{subfigure.7.2}
+\contentsline {figure}{\numberline {1.8}{\ignorespaces Relaci\IeC {\'o}n entre la potencia de los rotores y el movimiento de un cuadric\IeC {\'o}ptero\relax }}{13}{figure.caption.15}
+\contentsline {figure}{\numberline {1.9}{\ignorespaces Ejemplo de interfaz de usuario del componentes Uav\_viewer\relax }}{15}{figure.caption.17}
+\contentsline {figure}{\numberline {1.10}{\ignorespaces Ejemplos de ArDrone simulado en Gazebo\relax }}{16}{figure.caption.18}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Modelo de Ar.Drone en Gazebo.}}}{16}{subfigure.10.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Modelo Ar.Drone teleoperado en Gazebo}}}{16}{subfigure.10.2}
+\contentsline {figure}{\numberline {1.11}{\ignorespaces Ejemplo de algoritmo de navegaci\IeC {\'o}n basado en autolocalizaci\IeC {\'o}n en Gazebo.\relax }}{16}{figure.caption.19}
+\contentsline {figure}{\numberline {1.12}{\ignorespaces Ejemplos de aterrizaje y despegue en Gazebo y el drone real.\relax }}{17}{figure.caption.20}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Algoritmo de despegue y aterrizaje encontrando la baliza visual en Gazabo.}}}{17}{subfigure.12.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Ar.Drone en vuelo sobre baliza visual.}}}{17}{subfigure.12.2}
+\contentsline {figure}{\numberline {1.13}{\ignorespaces Ejemplo de navegaci\IeC {\'o}n a trav\IeC {\'e}s del seguimiento de rutas.\relax }}{17}{figure.caption.21}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Representaci\IeC {\'o}n del desarrollo en espiral.\relax }}{21}{figure.caption.22}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Imagen de Intel compute Stick\relax }}{25}{figure.caption.23}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Ejemplo de detecci\IeC {\'o}n en AprilTag\relax }}{27}{figure.caption.24}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Ejemplos de familias en AprilTag\relax }}{28}{figure.caption.25}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Estructura de ardrone\_server\relax }}{29}{figure.caption.26}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Ejemplo de Color Tuner aplicando filtros de color\relax }}{30}{figure.caption.27}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Ejemplo de slam\_markers identificando una baliza\relax }}{31}{figure.caption.28}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Ejemplo de aut\IeC {\'o}mata generado con VisualStates\relax }}{32}{figure.caption.29}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Ejemplo de simulador Gazebo\relax }}{34}{figure.caption.30}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Entradas y salidas de la soluci\IeC {\'o}n final.\relax }}{36}{figure.caption.31}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Diagrama de bloques del componente 3DPathFollower.\relax }}{37}{figure.caption.32}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Ejemplo de baliza de color arlequinada.\relax }}{38}{figure.caption.33}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Estados de la aplicaci\IeC {\'o}n 3DPathFollower\relax }}{41}{figure.caption.34}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Fichero de configuraci\IeC {\'o}n de interfaces ICE.\relax }}{47}{figure.caption.35}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Ejemplo del componente CalibrationTool.\relax }}{49}{figure.caption.36}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Escenario utilizado para las pruebas unitarias en Gazebo.\relax }}{51}{figure.caption.37}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Comparaci\IeC {\'o}n de balizas visuales en Gazebo.\relax }}{52}{figure.caption.38}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Drone simulado con baja altura}}}{52}{subfigure.2.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Vista de la c\IeC {\'a}mara vental de la baliza baliza arlequinada}}}{52}{subfigure.2.2}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Vista de la c\IeC {\'a}mara vental de la baliza AprilTags}}}{52}{subfigure.2.3}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Drone simulado navegando en Gazebo.\relax }}{53}{figure.caption.39}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{55}{subfigure.4.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{55}{subfigure.4.2}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Secuencia de despegue.\relax }}{56}{figure.caption.41}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{56}{subfigure.4.3}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Baliza arlequinada}}}{57}{subfigure.5.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Baliza AprilTags 4}}}{57}{subfigure.5.2}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Balizas desplegadas en el laboratorio.\relax }}{58}{figure.caption.43}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Baliza AprilTags 7}}}{58}{subfigure.5.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {Baliza AprilTags 16}}}{58}{subfigure.5.4}
+\contentsline {subfigure}{\numberline {(e)}{\ignorespaces {Baliza AprilTags 30}}}{58}{subfigure.5.5}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {}}}{59}{subfigure.6.1}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {}}}{59}{subfigure.6.2}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Secuencia de navegacion.\relax }}{60}{figure.caption.45}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {}}}{60}{subfigure.6.3}
+\contentsline {subfigure}{\numberline {(d)}{\ignorespaces {}}}{60}{subfigure.6.4}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Intel Compute Stick acoplado en Ar.Drone 2.\relax }}{62}{figure.caption.46}
+\addvspace {10\p@ }

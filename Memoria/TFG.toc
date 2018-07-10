@@ -1,0 +1,65 @@
+\select@language {spanish}
+\contentsline {chapter}{\IeC {\'I}ndice de figuras}{VII}{chapter*.4}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Rob\IeC {\'o}tica}{1}{section.1.1}
+\contentsline {subsection}{\numberline {1.1.1}Aplicaciones actuales}{2}{subsection.1.1.1}
+\contentsline {subsubsection}{Sector industrial}{3}{section*.6}
+\contentsline {subsubsection}{Aplicaciones de servicios}{4}{section*.8}
+\contentsline {section}{\numberline {1.2}Software en robots}{6}{section.1.2}
+\contentsline {subsection}{\numberline {1.2.1}Simulaci\IeC {\'o}n}{6}{subsection.1.2.1}
+\contentsline {section}{\numberline {1.3}Visi\IeC {\'o}n artificial en robots}{8}{section.1.3}
+\contentsline {section}{\numberline {1.4}Rob\IeC {\'o}tica A\IeC {\'e}rea}{9}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Aplicaciones actuales}{11}{subsection.1.4.1}
+\contentsline {subsubsection}{Cuadric\IeC {\'o}pteros}{11}{section*.14}
+\contentsline {subsubsection}{Rob\IeC {\'o}tica A\IeC {\'e}rea en el proyecto JdeRobot}{14}{section*.16}
+\contentsline {chapter}{\numberline {2}Objetivos}{19}{chapter.2}
+\contentsline {section}{\numberline {2.1}Problema a abordar}{19}{section.2.1}
+\contentsline {section}{\numberline {2.2}Requisitos}{20}{section.2.2}
+\contentsline {section}{\numberline {2.3}Metodolog\IeC {\'\i }a}{21}{section.2.3}
+\contentsline {section}{\numberline {2.4}Planificaci\IeC {\'o}n}{22}{section.2.4}
+\contentsline {chapter}{\numberline {3}Infraestructura}{24}{chapter.3}
+\contentsline {section}{\numberline {3.1}Parrot Ar.Drone 2}{24}{section.3.1}
+\contentsline {section}{\numberline {3.2}Intel Compute Stick}{25}{section.3.2}
+\contentsline {section}{\numberline {3.3}Biblioteca OpenCV}{26}{section.3.3}
+\contentsline {section}{\numberline {3.4}Biblioteca AprilTags}{26}{section.3.4}
+\contentsline {section}{\numberline {3.5}Entorno JdeRobot}{28}{section.3.5}
+\contentsline {subsection}{\numberline {3.5.1}Ardrone\_Server}{28}{subsection.3.5.1}
+\contentsline {subsection}{\numberline {3.5.2}Teleoperadores uav\_viewer y uav\_viewer\_py}{29}{subsection.3.5.2}
+\contentsline {subsection}{\numberline {3.5.3}Herramienta Color Tuner}{29}{subsection.3.5.3}
+\contentsline {subsection}{\numberline {3.5.4}Componente slam\_markers}{30}{subsection.3.5.4}
+\contentsline {subsection}{\numberline {3.5.5}VisualStates}{31}{subsection.3.5.5}
+\contentsline {section}{\numberline {3.6}Bibliotecas ICE}{33}{section.3.6}
+\contentsline {section}{\numberline {3.7}Simulador Gazebo}{33}{section.3.7}
+\contentsline {chapter}{\numberline {4}Navegaci\IeC {\'o}n aut\IeC {\'o}noma de un drone guiado por balizas visuales}{35}{chapter.4}
+\contentsline {section}{\numberline {4.1}Dise\IeC {\~n}o}{35}{section.4.1}
+\contentsline {section}{\numberline {4.2}Detecci\IeC {\'o}n visual de las balizas}{37}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Balizas de aterrizaje y despegue}{38}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Balizas de autolocalizaci\IeC {\'o}n}{39}{subsection.4.2.2}
+\contentsline {section}{\numberline {4.3}Aut\IeC {\'o}mata de navegaci\IeC {\'o}n}{40}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Estado de despegue controlado}{42}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}Estados de navegaci\IeC {\'o}n guiada por balizas}{43}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Estados de aterrizaje}{44}{subsection.4.3.3}
+\contentsline {section}{\numberline {4.4}Configuraci\IeC {\'o}n}{45}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Configuraci\IeC {\'o}n de la percepci\IeC {\'o}n}{45}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}Configuraci\IeC {\'o}n de interfaces}{46}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Configuraci\IeC {\'o}n de la secuencia de balizas}{47}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Herramienta CalibrationTool}{47}{section.4.5}
+\contentsline {chapter}{\numberline {5}Experimentos}{50}{chapter.5}
+\contentsline {section}{\numberline {5.1}Pruebas en Simulador}{51}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Elecci\IeC {\'o}n de balizas de despegue y aterrizaje}{51}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Ajuste del control de navegaci\IeC {\'o}n}{52}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Ejecuci\IeC {\'o}n t\IeC {\'\i }pica integral}{53}{subsection.5.1.3}
+\contentsline {section}{\numberline {5.2}Pruebas con el drone real y PC externo}{54}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Ajuste del control de navegaci\IeC {\'o}n}{54}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Desfase entre im\IeC {\'a}genes y \IeC {\'o}rdenes}{54}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Problemas con la detecci\IeC {\'o}n de las balizas arlequinadas}{55}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Ejecuci\IeC {\'o}n t\IeC {\'\i }pica integral}{56}{subsection.5.2.4}
+\contentsline {section}{\numberline {5.3}Pruebas con el drone real y un miniordenador}{61}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Preparaci\IeC {\'o}n y configuraci\IeC {\'o}n del miniordenador}{61}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Teleoperaci\IeC {\'o}n con miniordenador a bordo}{63}{subsection.5.3.2}
+\contentsline {subsection}{\numberline {5.3.3}Retardo detectado en uav\_viewer\_py}{63}{subsection.5.3.3}
+\contentsline {subsection}{\numberline {5.3.4}Ejecuci\IeC {\'o}n t\IeC {\'\i }pica con el miniordenador en tierra}{63}{subsection.5.3.4}
+\contentsline {chapter}{\numberline {6}Conclusiones}{65}{chapter.6}
+\contentsline {section}{\numberline {6.1}Conclusiones}{65}{section.6.1}
+\contentsline {section}{\numberline {6.2}Trabajos futuros}{67}{section.6.2}
+\contentsline {chapter}{Bibliograf\IeC {\'\i }a}{69}{section.6.2}
